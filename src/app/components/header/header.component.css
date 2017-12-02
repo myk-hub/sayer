@@ -1,0 +1,11 @@
+.item_header {
+  background-color: #0E1D3C;
+  margin: 0 -5% 0 -5%;
+}
+
+h1 {
+  font-size: 2em;
+  padding: 40px 0 40px 0;
+  margin-top: -10px;
+  color: white;
+}

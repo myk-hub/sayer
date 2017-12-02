@@ -18,6 +18,9 @@ export class TodoInputComponent implements OnInit {
   }
 
   private addTodo(): void {
+    if (/^\s*$/.test(this.todoText)) {
+      return alert('Please enter the text!');
+    }
     this.todoService.addTodo(this.todoText);
     this.todoText = '';
   }
