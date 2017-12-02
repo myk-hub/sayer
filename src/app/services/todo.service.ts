@@ -4,33 +4,42 @@ import { Todo } from '../classes/todo';
 @Injectable()
 export class TodoService {
 
-  private todos: Todo[];
+  // private todos: Todo[];
   private nextId: number;
-  // private nextText: string;
 
   constructor() {
-    this.todos = [
-      new Todo(0, "Write code today!"),
-      new Todo(1, "Write some more code tomorrow"),
-      new Todo(2, "Optimize code tomorrow evening")
-    ];
+    let todos = this.getTodos();
 
-    this.nextId = 3;
+    if (todos.length == 0) {
+      this.nextId = 0;
+    } else {
+      let maxId = todos[todos.length - 1].id;
+      this.nextId = maxId + 1;
+    }
   }
 
   public addTodo(text: string): void {
-    // console.log(this.todos);
     let todo = new Todo(this.nextId, text);
-    this.todos.push(todo);
+    let todos = this.getTodos();
+    todos.push(todo);
+
+    this.setLocalStorageTodos(todos);
     this.nextId++;
   }
 
   public getTodos(): Todo[] {
-    return this.todos;
+    let localStorageItem = JSON.parse(localStorage.getItem('todos'));
+    return localStorageItem == null ? [] : localStorageItem.todos;
   }
 
   public removeTodo(id: number): void {
-    this.todos = this.todos.filter((todo) => todo.id !== id);
+    let todos = this.getTodos();
+    todos = todos.filter((todo) => todo.id !== id);
+    this.setLocalStorageTodos(todos);
+  }
+
+  public setLocalStorageTodos(todos: Todo[]): void {
+    localStorage.setItem('todos', JSON.stringify({ todos: todos }));
   }
 
 }
