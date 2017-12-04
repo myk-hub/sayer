@@ -1,4 +1,4 @@
 <div class="todo-input-wrapper">
-  <input type="text" [(ngModel)]="todoText" value={{todoText}} placeholder="New item title.." />
+  <input type="text" [(ngModel)]="todoText" value={{todoText}} placeholder="New item title.." (keyup.enter)="addTodo()"/>
   <button class="btn btn-primary" (click)="addTodo()">></button>
 </div>
