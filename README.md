@@ -1,6 +1,5 @@
+# Click here to see application > [Angular Sayer App](https://sayer.herokuapp.com/) on Heroku.
 # Sayer
-# Click here to see application >>> https://sayer.herokuapp.com/ <<<
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.5.
 
 ## Development server
